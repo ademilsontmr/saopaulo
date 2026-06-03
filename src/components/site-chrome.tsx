@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Crown } from "lucide-react";
 
+import { OtherPremiumDomainsSection } from "@/components/other-premium-domains";
 import { DOMAIN, FORM_URL } from "@/lib/site";
 
 const NAV_ITEMS = [
@@ -66,7 +67,9 @@ function NavSectionLink({
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/40 py-10 mt-10">
+    <>
+      <OtherPremiumDomainsSection />
+      <footer className="border-t border-border/40 py-10">
       <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
           <Crown className="h-4 w-4 text-primary" />
@@ -86,6 +89,7 @@ export function SiteFooter() {
           <a href="/#faq" className="hover:text-primary transition">FAQ</a>
         </nav>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 }
