@@ -11,10 +11,20 @@ export default defineConfig({
     compatibilityDate: "2024-09-19",
     preset: "cloudflare_pages",
     cloudflare: { nodeCompat: true, deployConfig: true },
+    routeRules: {
+      "/**": {
+        headers: {
+          "cache-control":
+            "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+        },
+      },
+    },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Prerender estático roda em scripts/prerender-static.mjs após o build (compatível com cloudflare_pages).
+    prerender: { enabled: false },
   },
 });

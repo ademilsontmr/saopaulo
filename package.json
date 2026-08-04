@@ -9,7 +9,7 @@
     "generate:favicons": "node scripts/generate-favicons.mjs",
     "generate:og-image": "node scripts/generate-og-image.mjs",
     "prebuild": "npm run generate:sitemap && npm run generate:og-image",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender-static.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
